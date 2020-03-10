@@ -7,6 +7,3 @@ Ce projet inclut commme technos:
 - Spring boot
 - Spring security
 - ...
-
-Peace,
-Hamza
