@@ -5,5 +5,6 @@ Ceci est la partie back-end du projet de gestion des étudiants, ce projet inclu
 
 Ce projet inclut commme technos:
 - Spring boot
+- Spring data
 - Spring security
 - ...
