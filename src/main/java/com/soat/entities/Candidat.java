@@ -17,32 +17,32 @@ import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 @Entity
-public class Etudiant implements Serializable {
+public class Candidat implements Serializable {
 	@Id
 	@GeneratedValue
-	Long idEtudiant;
+	Long idCandidat;
 	String nom;
 	String prenom;
 	Date dateNaissance;
 	
-	public Etudiant(String nom, String prenom, Date dateNaissance) {
+	public Candidat(String nom, String prenom, Date dateNaissance) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
 	}
 
-	public Etudiant() {
+	public Candidat() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getIdEtudiant() {
-		return idEtudiant;
+	public Long getIdCandidat() {
+		return idCandidat;
 	}
 
-	public void setIdEtudiant(Long idEtudiant) {
-		this.idEtudiant = idEtudiant;
+	public void setIdCandidat(Long idCandidat) {
+		this.idCandidat = idCandidat;
 	}
 
 	public String getNom() {

@@ -11,8 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
-import com.soat.dao.EtudiantRepository;
-import com.soat.entities.Etudiant;
+import com.soat.dao.CandidatRepository;
+import com.soat.entities.Candidat;
 
 @SpringBootApplication
 public class IntercoApplication implements CommandLineRunner{
@@ -21,7 +21,7 @@ public class IntercoApplication implements CommandLineRunner{
 	private RepositoryRestConfiguration restConfiguration; 
 	
 	@Autowired
-	private EtudiantRepository etudiantRepository;
+	private CandidatRepository candidatRepository;
 
 	public static void main(String[] args) throws ParseException{
 		SpringApplication.run(IntercoApplication.class, args);
@@ -30,18 +30,18 @@ public class IntercoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		//Permet d'exposer les id, Optionnel car Spring Data Rest utilise dejà les liens
-		restConfiguration.exposeIdsFor(Etudiant.class);
+		restConfiguration.exposeIdsFor(Candidat.class);
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
-		etudiantRepository.save(new Etudiant("Anaïs", "Remy", df.parse("1990-12-03")));
-		etudiantRepository.save(new Etudiant("Mickaël", "Dufond", df.parse("1990-02-12")));
-		etudiantRepository.save(new Etudiant("Pascal", "Leroy", df.parse("1992-12-03")));
-		etudiantRepository.save(new Etudiant("Pascal", "Murot", df.parse("1992-06-09")));
+		candidatRepository.save(new Candidat("Anaïs", "Remy", df.parse("1990-12-03")));
+		candidatRepository.save(new Candidat("Mickaël", "Dufond", df.parse("1990-02-12")));
+		candidatRepository.save(new Candidat("Pascal", "Leroy", df.parse("1992-12-03")));
+		candidatRepository.save(new Candidat("Pascal", "Murot", df.parse("1992-06-09")));
 		
-		List<Etudiant> etudiants = etudiantRepository.findAll();
+		List<Candidat> candidats = candidatRepository.findAll();
 		
-		etudiants.forEach(e -> System.out.println(e.getNom()));
+		candidats.forEach(e -> System.out.println(e.getNom()));
 		
 	}
 

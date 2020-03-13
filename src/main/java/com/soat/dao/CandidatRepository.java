@@ -10,19 +10,19 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.soat.entities.Etudiant;
+import com.soat.entities.Candidat;
 
 // Tomcat l'orsqu'il reçoit une requête à partir d'un autre domain, donc on lui donne l'acces.
 @CrossOrigin("*")
 @RepositoryRestResource
-public interface EtudiantRepository extends JpaRepository<Etudiant, Long> {
+public interface CandidatRepository extends JpaRepository<Candidat, Long> {
 
 	//A part les méthodes par defaut fournis pas @RepositoryRestResource, on pourra définir nos propres méthodes.
 	@RestResource(path = "/byName")
-	public List<Etudiant>  findByNomContains(@Param("nom") String name);
+	public List<Candidat>  findByNomContains(@Param("nom") String name);
 	
-	//Exemple de requête : etudiants/search/byNamePage?nom=h&page=0&size=5
+	//Exemple de requête : candidats/search/byNamePage?nom=h&page=0&size=5
 	@RestResource(path = "/byNamePage")
-	public Page<Etudiant>  findByNomContains(@Param("nom") String name, Pageable pageable);
+	public Page<Candidat>  findByNomContains(@Param("nom") String name, Pageable pageable);
 	
 }
