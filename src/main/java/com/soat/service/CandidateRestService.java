@@ -7,28 +7,28 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.soat.dao.CandidatRepository;
-import com.soat.entities.Candidat;
+import com.soat.dao.CandidateRepository;
+import com.soat.entities.Candidate;
 
 /**
  * @RestController est commenter car on voudrais utilisé la méthode à travers l'annotation @RepositoryRestResource 
- * dans l'interface CandidatRepository qui elle permet d'avoir un enwemble prêt à utiliser de méthode.
+ * dans l'interface CandidateRepository qui elle permet d'avoir un enwemble prêt à utiliser de méthode.
  * 
  * Elle reste valable si on veut avoir des serices avec des traitements assez complexes
  *
  */
 
 @RestController 
-public class CandidatRestService {
+public class CandidateRestService {
 	
 	@Autowired
-	private CandidatRepository candidatRepository;
+	private CandidateRepository candidateRepository;
 	
 	// Les résultat de se service n'auront pas le même format de json que les service proposé par spring data rest, qui eux, vont avoir
 	// un json sous le format HATEOAS. (avec des lien en plus)  
-	@GetMapping(value = "/listCandidats")
-	public Page<Candidat> listCandidats(int page, int size) {
-		return candidatRepository.findAll(PageRequest.of(page, size, Sort.by("nom").descending().and(Sort.by("prenom").descending())));
+	@GetMapping(value = "/listCandidates")
+	public Page<Candidate> listCandidates(int page, int size) {
+		return candidateRepository.findAll(PageRequest.of(page, size, Sort.by("nom").descending().and(Sort.by("prenom").descending())));
 	}
 
 }

@@ -5,14 +5,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import com.soat.dao.RecruiterRepository;
+import com.soat.entities.Recruiter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
-import com.soat.dao.CandidatRepository;
-import com.soat.entities.Candidat;
+import com.soat.dao.CandidateRepository;
+import com.soat.entities.Candidate;
 
 @SpringBootApplication
 public class IntercoApplication implements CommandLineRunner{
@@ -21,7 +23,10 @@ public class IntercoApplication implements CommandLineRunner{
 	private RepositoryRestConfiguration restConfiguration; 
 	
 	@Autowired
-	private CandidatRepository candidatRepository;
+	private CandidateRepository candidateRepository;
+
+	@Autowired
+	private RecruiterRepository recruiterRepository;
 
 	public static void main(String[] args) throws ParseException{
 		SpringApplication.run(IntercoApplication.class, args);
@@ -30,19 +35,25 @@ public class IntercoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		//Permet d'exposer les id, Optionnel car Spring Data Rest utilise dejà les liens
-		restConfiguration.exposeIdsFor(Candidat.class);
-		
+		restConfiguration.exposeIdsFor(Candidate.class);
+		restConfiguration.exposeIdsFor(Recruiter.class);
+
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
-		candidatRepository.save(new Candidat("Anaïs", "Remy", df.parse("1990-12-03")));
-		candidatRepository.save(new Candidat("Mickaël", "Dufond", df.parse("1990-02-12")));
-		candidatRepository.save(new Candidat("Pascal", "Leroy", df.parse("1992-12-03")));
-		candidatRepository.save(new Candidat("Pascal", "Murot", df.parse("1992-06-09")));
-		
-		List<Candidat> candidats = candidatRepository.findAll();
-		
-		candidats.forEach(e -> System.out.println(e.getNom()));
-		
+		candidateRepository.save(new Candidate(null, "Anaïs", "Remy", df.parse("1990-12-03"), null));
+		candidateRepository.save(new Candidate(null, "Mickaël", "Dufond", df.parse("1990-02-12"),null));
+		candidateRepository.save(new Candidate(null, "Pascal", "Leroy", df.parse("1992-12-03"),null));
+		candidateRepository.save(new Candidate(null, "Pascal", "Murot", df.parse("1992-06-09"),null));
+
+		recruiterRepository.save(new Recruiter(null,"Soat", "SOAT, ce sont 360 consultants IT et coachs agiles qui développent un cercle vertueux entre connaissances et réalisations techniques pour transformer positivement vos organisations.", "java, .net, python", "20 rue des frigos 75013 Paris", "https://become.soat.fr/"));
+		recruiterRepository.save(new Recruiter(null,"Talan", "Talan, ce sont 360 consultants IT et coachs agiles qui développent un cercle vertueux entre connaissances et réalisations techniques pour transformer positivement vos organisations.", "java, .net, python", "20 rue des frigos 75013 Paris", "https://become.talan.fr/"));
+		recruiterRepository.save(new Recruiter(null,"BlaBlaCar", "BlaBlaCar, ce sont 360 consultants IT et coachs agiles qui développent un cercle vertueux entre connaissances et réalisations techniques pour transformer positivement vos organisations.", "java, .net, python", "20 rue des frigos 75013 Paris", "https://become.bbc.fr/"));
+
+		List<Candidate> candidates = candidateRepository.findAll();
+		List<Recruiter> recruiters = recruiterRepository.findAll();
+
+		candidates.forEach(e -> System.out.println("Candidate " + e.getIdCandidate() + ": " + e.getFirstName()));
+		recruiters.forEach(e -> System.out.println("Recruiter " + e.getIdRecruiter() + ": " + e.getName()));
 	}
 
 }
