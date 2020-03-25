@@ -9,13 +9,14 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
 public class Candidate implements Serializable {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long idCandidate;
 	String firstName;
 	String lastName;

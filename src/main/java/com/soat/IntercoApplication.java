@@ -41,7 +41,10 @@ public class IntercoApplication implements CommandLineRunner{
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		candidateRepository.save(new Candidate(null, "Anaïs", "Remy", df.parse("1990-12-03"), null));
-		candidateRepository.save(new Candidate(null, "Mickaël", "Dufond", df.parse("1990-02-12"),null));
+		candidateRepository.save(new Candidate(null, "Anis", "Ben Yahia", df.parse("1990-12-03"), null));
+		candidateRepository.save(new Candidate(null, "Anguela", "Merkel", df.parse("1990-12-03"), null));
+		candidateRepository.save(new Candidate(null, "Monica", "Dufond", df.parse("1990-02-12"),null));
+		candidateRepository.save(new Candidate(null, "Marion", "Cotillard", df.parse("1990-02-12"),null));
 		candidateRepository.save(new Candidate(null, "Pascal", "Leroy", df.parse("1992-12-03"),null));
 		candidateRepository.save(new Candidate(null, "Pascal", "Murot", df.parse("1992-06-09"),null));
 
