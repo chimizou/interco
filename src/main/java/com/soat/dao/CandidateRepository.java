@@ -7,11 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin("*")
 @RepositoryRestResource
 public interface CandidateRepository extends JpaRepository<Candidate, Long> {
 
@@ -23,4 +21,5 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     @RestResource(path = "/byFirstNamePage")
     Page<Candidate> findByFirstNameContains(@Param("firstName") String name, Pageable pageable);
 
+    Candidate findByEmailIgnoreCase(String email);
 }

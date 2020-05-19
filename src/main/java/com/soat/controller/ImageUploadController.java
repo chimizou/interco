@@ -17,7 +17,6 @@ import java.util.zip.Inflater;
 
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping(path = "image")
 public class ImageUploadController {
 

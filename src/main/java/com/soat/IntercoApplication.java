@@ -40,16 +40,9 @@ public class IntercoApplication implements CommandLineRunner {
         //Permet d'exposer les id, Optionnel car Spring Data Rest utilise dejà les liens
         restConfiguration.exposeIdsFor(Candidate.class);
         restConfiguration.exposeIdsFor(Recruiter.class);
+        restConfiguration.exposeIdsFor(TalentAdvocate.class);       //Important, sinon on pourrait pas enregistrer les candidats !
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-
-//        Candidate candidate1 = new Candidate(null, "Anaïs", "Remy", "email@email.com", df.parse("1990-12-03"), null);
-//        Candidate candidate2 = new Candidate(null, "Anis", "Ben Yahia", "email@email.com", df.parse("1990-12-03"), null);
-//        Candidate candidate3 = new Candidate(null, "Anguela", "Merkel", "email@email.com", df.parse("1990-12-03"), null);
-//        Candidate candidate4 = new Candidate(null, "Monica", "Dufond", "email@email.com", df.parse("1990-02-12"), null);
-//        Candidate candidate5 = new Candidate(null, "Marion", "Cotillard", "email@email.com", df.parse("1990-02-12"), null);
-//        Candidate candidate6 = new Candidate(null, "Pascal", "Leroy", "email@email.com", df.parse("1992-12-03"), null);
-//        Candidate candidate7 = new Candidate(null, "Pascal", "Murot", "email@email.com", df.parse("1992-06-09"), null);
 
         Candidate candidate1 = new Candidate();
         candidate1.setFirstName("Hamza");
@@ -63,9 +56,13 @@ public class IntercoApplication implements CommandLineRunner {
 
         TalentAdvocate talentAdvocate1 = new TalentAdvocate();
         talentAdvocate1.setFirstName("Christine");
+        talentAdvocate1.setLastName("De Roy");
+        talentAdvocate1.setEmail("Christine@gmail.com");
         talentAdvocateRepository.save(talentAdvocate1);
         TalentAdvocate talentAdvocate2 = new TalentAdvocate();
         talentAdvocate2.setFirstName("Francois");
+        talentAdvocate2.setLastName("Makelele");
+        talentAdvocate2.setEmail("francois@gmail.com");
         talentAdvocateRepository.save(talentAdvocate2);
 
         candidate1.setTalentAdvocate(talentAdvocate1);
