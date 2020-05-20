@@ -17,9 +17,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     @RestResource(path = "/byFirstName")
     List<Candidate> findByFirstNameContains(@Param("firstName") String name);
 
-    //Exemple de requête : candidates/search/byFirstNamePage?nom=h&page=0&size=5
-    @RestResource(path = "/byFirstNamePage")
-    Page<Candidate> findByFirstNameContains(@Param("firstName") String name, Pageable pageable);
+    Page<Candidate> findByFirstNameContainsIgnoreCase(@Param("firstName") String name, Pageable pageable);
 
     Candidate findByEmailIgnoreCase(String email);
 }

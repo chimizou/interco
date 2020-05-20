@@ -1,6 +1,5 @@
 package com.soat.dto;
 
-import com.soat.entities.TalentAdvocate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +16,6 @@ public class CandidateDTO {
     private String lastName;
     private String email;
     private Date birthDate;
-    private TalentAdvocate talentAdvocate;
+    private TalentAdvocateDTO talentAdvocate;
     private LocalDate creationDate;
 }
