@@ -13,4 +13,6 @@ public interface ICandidateService {
     Candidate findCandidateByEmail(String email);
 
     Page<Candidate> findByFirstNameContains(String name, Pageable pageable);
+
+    Candidate findCandidateById(Long candidateId);
 }

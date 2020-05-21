@@ -36,4 +36,9 @@ public class CandidateServiceImpl implements ICandidateService {
     public Page<Candidate> findByFirstNameContains(String name, Pageable pageable) {
         return candidateRepository.findByFirstNameContainsIgnoreCase(name, pageable);
     }
+
+    @Override
+    public Candidate findCandidateById(Long candidateId) {
+        return candidateRepository.getOne(candidateId);
+    }
 }
