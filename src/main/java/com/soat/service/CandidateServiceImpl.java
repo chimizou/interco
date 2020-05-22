@@ -10,6 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service("candidateService")
 @Transactional
 public class CandidateServiceImpl implements ICandidateService {
@@ -40,5 +42,15 @@ public class CandidateServiceImpl implements ICandidateService {
     @Override
     public Candidate findCandidateById(Long candidateId) {
         return candidateRepository.getOne(candidateId);
+    }
+
+    @Override
+    public Optional<Candidate> findByCandidateById(Long candidateId) {
+        return candidateRepository.findById(candidateId);
+    }
+
+    @Override
+    public void deleteCandidateById(Long idCandidate) {
+        candidateRepository.deleteById(idCandidate);
     }
 }
